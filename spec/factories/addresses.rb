@@ -7,5 +7,9 @@ FactoryBot.define do
     country { Faker::Address.country }
     number { Faker::Address.building_number }
     addressable { nil }
+
+    after :build do |address|
+      address.addressable = create(%i(insurer policy_holder).sample)
+    end
   end
 end

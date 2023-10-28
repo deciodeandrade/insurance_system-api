@@ -8,4 +8,7 @@ RSpec.describe Insurer, type: :model do
   it { should validate_presence_of(:cnpj) }
   it { should validate_uniqueness_of(:cnpj) }
   it { should validate_length_of(:cnpj).is_at_most(14) }
+
+  it { should have_one :address }
+  it { should have_many :insurance_contracts }
 end

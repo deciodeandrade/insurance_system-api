@@ -9,4 +9,7 @@ RSpec.describe PolicyHolder, type: :model do
   it { should validate_presence_of(:phone_number) }
   it { should validate_presence_of(:email) }
   it { should validate_uniqueness_of(:email) }
+
+  it { should have_one :address }
+  it { should have_many :insurance_contracts }
 end
