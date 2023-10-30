@@ -3,5 +3,5 @@ class Notification < ApplicationRecord
 
   validates :user, presence: true
   validates :message, presence: true
-  validates :read, presence: true
+  validates :read, inclusion: { in: [true, false] }
 end
