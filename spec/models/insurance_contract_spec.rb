@@ -8,4 +8,6 @@ RSpec.describe InsuranceContract, type: :model do
 
   it { should belong_to :policy_holder }
   it { should belong_to :insurer }
+
+  it { should have_one :document }
 end

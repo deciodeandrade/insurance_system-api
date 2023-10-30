@@ -9,4 +9,6 @@ RSpec.describe InsurancePolicy, type: :model do
   it { should validate_presence_of(:coverage_details) }
 
   it { should belong_to :insurance_contract }
+
+  it { should have_one :document }
 end

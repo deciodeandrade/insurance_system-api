@@ -1,5 +1,6 @@
 class PolicyHolder < ApplicationRecord
   has_one :address, as: :addressable
+  
   has_many :insurance_contracts
 
   validates :name, presence: true
