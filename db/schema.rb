@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_28_172923) do
+ActiveRecord::Schema.define(version: 2023_10_28_183234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,19 @@ ActiveRecord::Schema.define(version: 2023_10_28_172923) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["insurer_id"], name: "index_insurance_contracts_on_insurer_id"
     t.index ["policy_holder_id"], name: "index_insurance_contracts_on_policy_holder_id"
+  end
+
+  create_table "insurance_policies", force: :cascade do |t|
+    t.string "policy_number"
+    t.decimal "premium_amount"
+    t.date "start_date"
+    t.date "end_date"
+    t.string "status"
+    t.text "coverage_details"
+    t.bigint "insurance_contract_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["insurance_contract_id"], name: "index_insurance_policies_on_insurance_contract_id"
   end
 
   create_table "insurers", force: :cascade do |t|
@@ -89,4 +102,5 @@ ActiveRecord::Schema.define(version: 2023_10_28_172923) do
 
   add_foreign_key "insurance_contracts", "insurers"
   add_foreign_key "insurance_contracts", "policy_holders"
+  add_foreign_key "insurance_policies", "insurance_contracts"
 end
