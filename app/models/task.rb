@@ -8,4 +8,12 @@ class Task < ApplicationRecord
   validates :status, presence: true
   validates :taskable, presence: true
   validates :assigned_to_user, presence: true
+
+  enum status: {
+    pending: 'pending',
+    in_progress: 'in_progress',
+    completed: 'completed',
+    delayed: 'delayed',
+    canceled: 'canceled'
+  }
 end

@@ -12,4 +12,13 @@ RSpec.describe PolicyHolder, type: :model do
 
   it { should have_one :address }
   it { should have_many :insurance_contracts }
+
+  it do
+    should define_enum_for(:type)
+      .backed_by_column_of_type(:string)
+      .with_values(
+        individual: 'individual',
+        legal_entity: 'legal_entity'
+      )
+  end
 end

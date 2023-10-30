@@ -9,4 +9,11 @@ class InsurancePolicy < ApplicationRecord
   validates :end_date, presence: true
   validates :status, presence: true
   validates :coverage_details, presence: true
+
+  enum status: {
+    pending: 'pending',
+    active: 'active',
+    expired: 'expired',
+    canceled: 'canceled'
+  }
 end

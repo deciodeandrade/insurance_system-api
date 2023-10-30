@@ -1,11 +1,12 @@
 FactoryBot.define do
   factory :insurance_policy do
-    policy_number { rand(1..1000000).to_s }
-    premium_amount { "9.99" }
-    start_date { "2023-10-28" }
-    end_date { "2023-10-28" }
-    status { "MyString" }
-    coverage_details { "MyText" }
+    policy_number { Faker::Number.unique.number(digits: 6) }
+    premium_amount { Faker::Commerce.price(range: 50..500.0) }
+    start_date { Faker::Date.between(from: 1.year.ago, to: Date.today) }
+    end_date { Faker::Date.forward(days: 365) }
+    status { %i(pending active expired canceled).sample }
+    coverage_details { Faker::Lorem.paragraph }
     insurance_contract
   end
 end
+    

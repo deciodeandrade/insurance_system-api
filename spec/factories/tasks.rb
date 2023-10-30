@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :task do
-    description { "MyText" }
-    due_date { "2023-10-30" }
-    status { "MyString" }
+    description { Faker::Lorem.paragraph }
+    due_date { Faker::Date.forward(days: 30) }
+    status { %i(pending in_progress completed delayed canceled).sample }
     association :assigned_to_user, factory: :user
 
     after :build do |task|

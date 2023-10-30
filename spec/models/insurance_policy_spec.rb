@@ -11,4 +11,15 @@ RSpec.describe InsurancePolicy, type: :model do
   it { should belong_to :insurance_contract }
 
   it { should have_one :document }
+
+  it do
+    should define_enum_for(:status)
+      .backed_by_column_of_type(:string)
+      .with_values(
+        pending: 'pending',
+        active: 'active',
+        expired: 'expired',
+        canceled: 'canceled'
+      )
+  end
 end

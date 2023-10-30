@@ -12,4 +12,16 @@ RSpec.describe Task, type: :model do
 
   it { should belong_to(:taskable) }
   it { should belong_to(:assigned_to_user).class_name('User') }
+
+  it do
+    should define_enum_for(:status)
+      .backed_by_column_of_type(:string)
+      .with_values(
+        pending: 'pending',
+        in_progress: 'in_progress',
+        completed: 'completed',
+        delayed: 'delayed',
+        canceled: 'canceled'
+      )
+  end
 end
