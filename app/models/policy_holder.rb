@@ -1,4 +1,6 @@
 class PolicyHolder < ApplicationRecord
+  self.inheritance_column = :_type_disabled
+
   has_one :address, as: :addressable
   
   has_many :insurance_contracts
